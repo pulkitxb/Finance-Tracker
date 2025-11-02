@@ -8,6 +8,13 @@
       "when": 1761294146820,
       "tag": "0000_large_menace",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1762089572360,
+      "tag": "0001_tiny_starfox",
+      "breakpoints": true
     }
   ]
 }

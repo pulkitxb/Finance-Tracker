@@ -1,5 +1,5 @@
 import { db } from "@/db/drizzle";
-import { accounts, insertAccountSchema } from "@/db/schema";
+import { categories, insertCategorySchema } from "@/db/schema";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
 import { and, eq, inArray } from "drizzle-orm";
 import { Hono } from "hono";
@@ -14,7 +14,7 @@ const app = new Hono().
             return c.json({error: "unauthorized"}, 401);
         }
 
-        const data = await db.select({id: accounts.id, name: accounts.name}).from(accounts).where(eq(accounts.userId, auth.userId));
+        const data = await db.select({id: categories.id, name: categories.name}).from(categories).where(eq(categories.userId, auth.userId));
         return c.json({data});
     })
     .get("/:id", zValidator("param", z.object({
@@ -33,12 +33,12 @@ const app = new Hono().
             return c.json({error: "Unauthorized"}, 401 );
         }
 
-        const [data] = await db.select({ id: accounts.id, name: accounts.name })
-        .from(accounts)
+        const [data] = await db.select({ id: categories.id, name: categories.name })
+        .from(categories)
         .where(
             and(
-                eq(accounts.userId, auth.userId),
-                eq(accounts.id, id)
+                eq(categories.userId, auth.userId),
+                eq(categories.id, id)
             ),
         );
 
@@ -49,7 +49,7 @@ const app = new Hono().
         return c.json({ data });
     }
     )
-    .post("/", clerkMiddleware(), zValidator("json", insertAccountSchema.pick({
+    .post("/", clerkMiddleware(), zValidator("json", insertCategorySchema.pick({
             name: true,
         })), async (c) => {
             const auth = getAuth(c);
@@ -59,7 +59,7 @@ const app = new Hono().
                 return c.json({error: "unauthorized"}, 401);
             }
 
-            const [data] = await db.insert(accounts).values({
+            const [data] = await db.insert(categories).values({
                 id: createId(),
                 userId: auth.userId,
                 ...values
@@ -76,12 +76,12 @@ const app = new Hono().
                 return c.json({error: "unauthorized"}, 401);
             }
 
-            const data = await db.delete(accounts).where(
+            const data = await db.delete(categories).where(
                 and(
-                    eq(accounts.userId, auth.userId),
-                    inArray(accounts.id, values.ids)
+                    eq(categories.userId, auth.userId),
+                    inArray(categories.id, values.ids)
                 )
-            ).returning({id: accounts.id});
+            ).returning({id: categories.id});
 
             return c.json({data});
         }
@@ -97,7 +97,7 @@ const app = new Hono().
         ),
         zValidator(
             "json",
-            insertAccountSchema.pick({
+            insertCategorySchema.pick({
                 name: true,
             })
         ),
@@ -114,11 +114,11 @@ const app = new Hono().
                 return c.json({ error: "Unauthorized" }, 401);
             }
 
-            const [data] = await db.update(accounts).set(values)
+            const [data] = await db.update(categories).set(values)
                                 .where(
                                     and(
-                                        eq(accounts.userId, auth.userId),
-                                        eq(accounts.id, id),
+                                        eq(categories.userId, auth.userId),
+                                        eq(categories.id, id),
                                     )
                                 ).returning();
             
@@ -150,14 +150,14 @@ const app = new Hono().
                 return c.json({ error: "Unauthorized" }, 401);
             }
 
-            const [data] = await db.delete(accounts)
+            const [data] = await db.delete(categories)
                                 .where(
                                     and(
-                                        eq(accounts.userId, auth.userId),
-                                        eq(accounts.id, id),
+                                        eq(categories.userId, auth.userId),
+                                        eq(categories.id, id),
                                     )
                                 ).returning({
-                                    id: accounts.id
+                                    id: categories.id
                                 });
             
             if(!data) {
