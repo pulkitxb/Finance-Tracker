@@ -10,7 +10,7 @@ export default function Page() {
                     <h1 className="font-bold text-3xl text-[#2E2A47]">
                         Welcome Back!
                     </h1>
-                    <p>Log in or Create account to get back to your dashboard!</p>
+                    <p className="text-base text-[#7E8CA0]">Log in or Create account to get back to your dashboard!</p>
                 </div>
                 <div className="flex items-center justify-center mt-8">
                     <ClerkLoaded>
@@ -21,9 +21,9 @@ export default function Page() {
                     </ClerkLoading>
                 </div>
             </div>
-            <div className="h-full hidden lg:flex items-center justify-center" style={{ backgroundColor: '#36454f' }}>
-                <Image src="/logo.webp" alt="logo" width={100} height={100} />
+            <div className="h-full bg-blue-600 hidden lg:flex items-center justify-center">
+                <Image src="./wired.svg" alt="logo" width={100} height={100} />
             </div>
-        </div>
+        </div >
     )
 }
