@@ -7,8 +7,6 @@ Track your **income, expenses, categories, accounts**, visualize spending, and i
 
 ## 🖼️ App Screenshots
 
-> Replace the placeholder links (`/images/...png`) with your GitHub hosted images.
-
 ### 🟦 Dashboard  
 ![Dashboard Screenshot](https://raw.githubusercontent.com/pulkitxb/Finance-Tracker/main/public/images/dashboard.png)
 
