@@ -8,7 +8,6 @@ const DashboardLayout = ({ children }: props) => {
         <>
             <Header />
             <main className="px-3">
-                Layout
                 {children}
             </main>
         </>

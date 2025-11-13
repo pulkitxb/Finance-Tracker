@@ -44,7 +44,14 @@ type Props = {
 export const TransactionForm = ({ id, defaultValues, onSubmit, onDelete, disabled, accountOptions, categoryOptions, onCreateAccount, onCreateCategory }: Props) => {
     const form = useForm<FormValues>({
         resolver: zodResolver(formScehma),
-        defaultValues: defaultValues,
+        defaultValues: defaultValues ?? {
+            date: new Date(),
+            accountId: "",
+            categoryId: "",
+            payee: "",
+            amount: "",
+            notes: "",
+        },
     })
 
     const handleSubmit = (values: FormValues) => {

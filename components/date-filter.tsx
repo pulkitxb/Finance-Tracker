@@ -85,7 +85,7 @@ export const DateFilter = () => {
           numberOfMonths={2}
         />
 
-        <div className="flex w-full items-center gap-x-2 p-4">
+        <div className="flex flex-col w-full items-center gap-2 p-4">
           <PopoverClose asChild>
             <Button
               onClick={onReset}

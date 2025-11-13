@@ -14,12 +14,14 @@ const Header = function () {
                         <HeaderLogo />
                         <Navigation />
                     </div>
-                    <ClerkLoaded>
-                        <UserButton afterSignOutUrl="/" />
-                    </ClerkLoaded>
-                    <ClerkLoading>
-                        <Loader2 className="size-8 animate-spin text-slate-400" />
-                    </ClerkLoading>
+                    <div className="flex items-center gap-x-2">
+                        <ClerkLoaded>
+                            <UserButton afterSignOutUrl="/" />
+                        </ClerkLoaded>
+                        <ClerkLoading>
+                            <Loader2 className="size-8 animate-spin text-slate-400" />
+                        </ClerkLoading>
+                    </div>
                 </div>
                 <WelcomeMsg />
                 <Filters />

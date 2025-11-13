@@ -21,6 +21,7 @@ type PieVariantProps = {
 };
 
 export const PieVariant = ({ data }: PieVariantProps) => {
+    const total = data.reduce((sum, item) => sum + item.value, 0);
     return (
         <ResponsiveContainer width="100%" height={350}>
             <PieChart>
@@ -32,33 +33,34 @@ export const PieVariant = ({ data }: PieVariantProps) => {
                     content={({ payload }) => {
                         return (
                             <ul className="flex flex-col space-y-2">
-                                {payload?.map((entry, index) => (
-                                    <li
-                                        key={`item-${index}`}
-                                        className="flex items-center space-x-2"
-                                    >
-                                        <span
-                                            className="size-2 rounded-full"
-                                            style={{
-                                                backgroundColor: entry.color,
-                                            }}
-                                            aria-hidden
-                                        />
+                                {payload?.map((entry, index) => {
+                                    const value = entry?.payload?.value || 0;
+                                    const percent = total ? (value / total) * 100 : 0;
+                                    return (
+                                        <li
+                                            key={`item-${index}`}
+                                            className="flex items-center space-x-2"
+                                        >
+                                            <span
+                                                className="size-2 rounded-full"
+                                                style={{
+                                                    backgroundColor: entry.color,
+                                                }}
+                                                aria-hidden
+                                            />
 
-                                        <div className="space-x-1">
-                                            <span className="text-sm text-muted-foreground">
-                                                {entry.value}
-                                            </span>
+                                            <div className="space-x-1">
+                                                <span className="text-sm text-muted-foreground">
+                                                    {entry.value}
+                                                </span>
 
-                                            <span className="text-sm">
-                                                {formatPercentage(
-                                                    (entry.payload as unknown as { percent: number })
-                                                        .percent * 100
-                                                )}
-                                            </span>
-                                        </div>
-                                    </li>
-                                ))}
+                                                <span className="text-sm">
+                                                    {formatPercentage(percent)}
+                                                </span>
+                                            </div>
+                                        </li>
+                                    )
+                                })}
                             </ul>
                         );
                     }}

@@ -93,7 +93,7 @@ export const ImportCard = ({
         });
 
         const formattedData = arrayOfData.map((item) => {
-            let cleanAmountStr = String(item.amount)
+            const cleanAmountStr = String(item.amount)
                 .replace(/[−–—]/g, "-")
                 .replace(/[^0-9.\-()]/g, "")
                 .replace(/\s+/g, "");
