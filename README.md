@@ -14,7 +14,7 @@ Track your **income, expenses, categories, accounts**, visualize spending, and i
 ![Transactions Screenshot](https://raw.githubusercontent.com/pulkitxb/Finance-Tracker/main/public/images/transactions.png)
 
 ### ➕ Add Transaction Drawer  
-![Add Transaction Screenshot](https://raw.githubusercontent.com/pulkitxb/Finance-Tracker/main/public/images/add-transaction..png)
+![Add Transaction Screenshot](https://raw.githubusercontent.com/pulkitxb/Finance-Tracker/main/public/images/add-transaction.png)
 
 ### 🏦 Accounts Page  
 ![Accounts Screenshot](https://raw.githubusercontent.com/pulkitxb/Finance-Tracker/main/public/images/accounts.png)
