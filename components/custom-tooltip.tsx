@@ -10,10 +10,10 @@ import { formatCurrency } from "@/lib/utils";
 
 type CustomTooltipProps = {
     active: boolean | undefined;
-    payload: Payload<ValueType, NameType>[] | undefined;
+    payload: readonly Payload<ValueType, NameType>[] | undefined;
 };
 
-export const CustomTooltip = ({ active, payload }: any) => {
+export const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
     if (!active || !payload) return null;
 
     const date = payload[0].payload.date as Date;
